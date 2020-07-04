@@ -110,14 +110,14 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
 
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+    if (!profile) return res.status(404).json({ msg: 'Profile not found' });
 
     res.json(profile);
   } catch (error) {
     console.error(error);
 
     // if the passed id is not a valid mongo ObjectId it throws an error of this kind
-    if (error.kind === 'ObjectId') return res.status(400).json({ msg: 'Profile not found' });
+    if (error.kind === 'ObjectId') return res.status(404).json({ msg: 'Profile not found' });
 
     res.status(500).send('internal server error');
   }
@@ -157,8 +157,6 @@ router.put('/experience', [auth, [
   try {
     const profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
-
     profile.experience.unshift(newExp);
 
     await profile.save();
@@ -176,8 +174,6 @@ router.put('/experience', [auth, [
 router.delete('/experience/:exp_id', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
-
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     const removeIndex = profile.experience.map(exp => exp.id).indexOf(req.params.exp_id);
 
@@ -212,8 +208,6 @@ router.put('/education', [auth, [
   try {
     const profile = await Profile.findOne({ user: req.user.id });
 
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
-
     profile.education.unshift(newEdu);
 
     await profile.save();
@@ -231,8 +225,6 @@ router.put('/education', [auth, [
 router.delete('/education/:edu_id', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
-
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
 
     const removeIndex = profile.education.map(edu => edu.id).indexOf(req.params.edu_id);
 
