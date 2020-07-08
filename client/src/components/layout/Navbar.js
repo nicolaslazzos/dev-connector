@@ -9,6 +9,12 @@ const Navbar = props => {
     <ul>
       <li><a href="#!">Developers</a></li>
       <li>
+        <Link to='/dashboard'>
+          <i className='fas fa-user' />{' '}
+          <span className='hide-sm'>Dashboard</span>
+        </Link>
+      </li>
+      <li>
         <a onClick={props.logout} href="#!">
           <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
@@ -30,7 +36,7 @@ const Navbar = props => {
       <h1>
         <Link to='/'><i className="fas fa-code"></i> DevConnector</Link>
       </h1>
-      {!props.auth.loading && (props.auth.isAuthenticated ? authLinks : guestLinks)}
+      {!props.auth.loading && props.auth.isAuthenticated ? authLinks : guestLinks}
     </nav>
   )
 };
