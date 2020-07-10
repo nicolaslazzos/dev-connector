@@ -152,7 +152,7 @@ const CreateProfile = props => {
 
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object,
+  profile: PropTypes.object.isRequired,
   getCurrentProfile: PropTypes.func.isRequired
 }
 
