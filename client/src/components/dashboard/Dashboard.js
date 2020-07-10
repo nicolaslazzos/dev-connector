@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getCurrentProfile } from '../../actions';
 import Spinner from '../layout/Spinner';
+import DashboardActions from './DashboardsActions';
 
 const Dashboard = props => {
   useEffect(() => { props.getCurrentProfile() }, []);
@@ -15,7 +16,9 @@ const Dashboard = props => {
       <h1 className='large text-primary'>Dashboard</h1>
       <p className="lead"><i className='fas fa-user'></i> Welcome {user && user.name}</p>
       {profile ? (
-        <React.Fragment>has</React.Fragment>
+        <React.Fragment>
+          <DashboardActions />
+        </React.Fragment>
       ) : (
           <React.Fragment>
             <p>You have not yet setup a profile, please add some info.</p>
