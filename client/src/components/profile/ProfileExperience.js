@@ -7,7 +7,7 @@ const ProfileExperience = props => {
 
   return (
     <div>
-      <h3 class="text-dark">{company}</h3>
+      <h3 className="text-dark">{company}</h3>
       <p><Moment format='DD/MM/YYY'>{from}</Moment> - {current ? 'Now' : <Moment format='DD/MM/YYY'>{to}</Moment>}</p>
       <p><strong>Position: </strong>{title}</p>
       <p>

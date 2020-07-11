@@ -7,7 +7,7 @@ const ProfileEducation = props => {
 
   return (
     <div>
-      <h3 class="text-dark">{school}</h3>
+      <h3 className="text-dark">{school}</h3>
       <p><Moment format='DD/MM/YYY'>{from}</Moment> - {current ? 'Now' : <Moment format='DD/MM/YYY'>{to}</Moment>}</p>
       <p><strong>Degree: </strong>{`${degree}${fieldofstudy ? ` in ${fieldofstudy}` : ''}`}</p>
       <p>
