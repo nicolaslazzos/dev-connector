@@ -21,10 +21,10 @@ const CreateProfile = props => {
   });
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-  useEffect(() => {
-    const { profile, loading } = props.profile;
+  const { profile: { profile, loading }, getCurrentProfile, history } = props;
 
-    props.getCurrentProfile();
+  useEffect(() => {
+    getCurrentProfile();
 
     if (!loading && profile)
       setFormData({
@@ -41,7 +41,7 @@ const CreateProfile = props => {
         youtube: !profile.social ? '' : profile.social.youtube,
         instagram: !profile.social ? '' : profile.social.instagram,
       });
-  }, [props.profile.loading]);
+  }, [loading, getCurrentProfile]);
 
   const { company, website, location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram } = formData;
 
@@ -50,7 +50,7 @@ const CreateProfile = props => {
   const onSubmit = e => {
     e.preventDefault();
 
-    props.createProfile(formData, props.history, !!props.profile.profile);
+    props.createProfile(formData, history, !!profile.profile);
   }
 
   return (

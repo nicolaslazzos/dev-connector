@@ -9,11 +9,13 @@ import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions';
 
 const Dashboard = props => {
-  useEffect(() => { props.getCurrentProfile() }, []);
+  const { profile: { profile, loading }, auth: { user }, getCurrentProfile } = props;
 
-  const { profile: { profile, loading }, auth: { user } } = props;
+  useEffect(() => { getCurrentProfile() }, [getCurrentProfile]);
 
-  return loading && !profile ? <Spinner /> : (
+  if (loading && !profile) return <Spinner />;
+
+  return (
     <React.Fragment>
       <h1 className='large text-primary'>Dashboard</h1>
       <p className="lead"><i className='fas fa-user'></i> Welcome {user && user.name}</p>
