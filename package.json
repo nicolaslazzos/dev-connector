@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolaslazzos/mern-course.git"
+    "url": "git+https://github.com/nicolaslazzos/dev-connector.git"
   },
   "author": "Nicolas Lazzos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nicolaslazzos/mern-course/issues"
+    "url": "https://github.com/nicolaslazzos/dev-connector/issues"
   },
-  "homepage": "https://github.com/nicolaslazzos/mern-course#readme",
+  "homepage": "https://github.com/nicolaslazzos/dev-connector#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
